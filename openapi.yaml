@@ -31,6 +31,34 @@ tags:
 
 paths:
   /:
+     post:
+     tags:
+     - Dish
+     summary: Insert new Dishes in the Data Base
+     parameters:
+     - $ref: '#/components/parameters/Dish'
+     requestBody:
+       content:
+         application/json:
+           schema:
+             $ref: '#/components/schemas/BodyDishPost'
+       required: true
+     responses:
+       200:
+         description: The new Dish has been sumbit Succesfully
+         content:
+          application/json:
+           schema:
+            $ref: '#/components/schemas/SuccesfullDish'
+            
+       400:
+         $ref: '#/components/responses/BadRequest'
+         
+       401:
+         $ref: '#/components/responses/DishAlreadyinTheDB'
+        
+       404:
+         $ref: '#/components/responses/NoInformation'
    
          
   /{IdDish}:
